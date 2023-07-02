@@ -6,7 +6,7 @@ import math
 
 PDF_PATH = os.path.join(os.path.dirname(__file__), "2023학년도 경희대학교 입학전형 통계자료.pdf")
 EXCEL_PATH = os.path.join(os.path.dirname(__file__), "result.xlsx")
-BOUND_HIGH = 807.64  # p.10에 내신 1.0 나옴
+BOUND_HIGH = 810.50  # p.10에 내신 1.0 나옴
 BOUND_LOW = 1128.08  # p.18에 내신 9.0 나옴
 RESOLUTION = 0.01
 
@@ -67,7 +67,12 @@ with pdfplumber.open(PDF_PATH) as pdf:
                     passed[y_round].append(x_round)
                 else:
                     passed[y_round] = [x_round]
-
+                """
+                if x_round in x_dict.keys():
+                    x_dict[x_round].add(y_round)
+                else:
+                    x_dict[x_round] = {y_round}
+                """
                 canvas.create_oval(item["x0"], height - item["y0"] - 2.8615, item["x1"], height - item["y1"] + 2.8615, outline="black", width=0.3)
 
 print(sorted(passed.keys()))
