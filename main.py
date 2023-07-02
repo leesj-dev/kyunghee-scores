@@ -21,16 +21,21 @@ def round_partial (value, resolution):
 with pdfplumber.open(path) as pdf:
     page = pdf.pages[9]
     obj = page.objects
+    # width, height 확인용
     # print(page.width, page.height)
+
+    # object 구조 파악용
     # with open("out.txt", "w") as fout:
         # pprint(obj, fout)
+
+    # X 추출 및 그리기
     for item in obj["line"]:
         if item["stroking_color"] == (1, 0, 0):  # red color
-            # print(item["x0"], height - item["y0"], item["x1"], height - item["y1"])
             canvas.create_line(item["x0"], height - item["y0"], item["x1"], height - item["y1"], fill="red", width=0.3)
             canvas.create_line(item["x0"], height - item["y1"], item["x1"], height - item["y0"], fill="red", width=0.3)
             y_set.add(round_partial(height - (item["y0"] + item["y1"]) / 2, 0.005))
 
+    # O 추출 및 그리기
     for item in obj["curve"]:
         if len(item["pts"]) == 3:
             y_round = round_partial(height - item["y0"], 0.005)
@@ -44,6 +49,8 @@ with pdfplumber.open(path) as pdf:
                 canvas.create_oval(item["x0"], height - item["y0"] - 2.8615, item["x1"], height - item["y1"] + 2.8615, outline="black", width=0.3)
 
 print(sorted(y_set))
+
+# x좌표 별 y좌표 결과 추출
 """
 with open("out1.txt", "w") as fout:
     for k in sorted(x_dict.keys()):
