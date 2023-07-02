@@ -15,6 +15,7 @@ path = os.path.join(os.path.dirname(__file__), "2023학년도 경희대학교 �
 x_dict = {}
 y_set = set()
 
+# 0.05 단위로 이산화 (오차 보정)
 def round_partial (value, resolution):
     return round(round(value / resolution) * resolution, -math.floor(math.log(resolution, 10)))
 
