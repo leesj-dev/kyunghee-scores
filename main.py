@@ -98,5 +98,5 @@ for k in sorted(result.keys()):
 ws.used_range.number_format = "0.00"
 
 canvas.update()
-canvas.postscript(file="result.ps")
+canvas.postscript(file="graph.ps")
 # app.mainloop()

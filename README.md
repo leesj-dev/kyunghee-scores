@@ -12,8 +12,8 @@
 * `2023학년도 경희대학교 입학전형 통계자료.pdf` : 원본 PDF
 * `original.pdf`: 위 자료에서의 10번째 페이지만 따로 추출한 PDF
 * `main.py` : 실행 코드
-* `result.ps` : 실행 결과
-* `result.pdf` : Adobe Illustrator에서 PostScript 파일(`result.ps`)을 PDF로 변환
+* `graph.ps` : 실행 결과
+* `graph.pdf` : Adobe Illustrator에서 PostScript 파일(`graph.ps`)을 PDF로 변환
 
 ## 해결해야 하는 이슈
 1. PDF을 파싱하다 보면 오브젝트들의 좌표값들이 정확하게 일관적 규칙을 가지고 배치되어 있지 않고 < 0.03pt의 오차를 가지고 있는 것을 확인할 수 있습니다. 이러한 오차 때문에 threshold 설정이 상당히 중요하고, PDF의 각 페이지마다 알맞는 threshold가 다르기에 단순히 round 처리를 가지고 바운더리를 나누는 것이 아니라 조금 더 복잡한 알고리즘을 적용해야 할 필요성을 느끼고 있습니다.
