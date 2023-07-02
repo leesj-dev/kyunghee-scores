@@ -23,11 +23,13 @@ with pdfplumber.open(path) as pdf:
     page = pdf.pages[9]
     obj = page.objects
     # width, height 확인용
-    # print(page.width, page.height)
+    "print(page.width, page.height)"
 
     # object 구조 파악용
-    # with open("out.txt", "w") as fout:
-        # pprint(obj, fout)
+    """
+    with open("out.txt", "w") as fout:
+        pprint(obj, fout)
+    """
 
     # X 추출 및 그리기
     for item in obj["line"]:
